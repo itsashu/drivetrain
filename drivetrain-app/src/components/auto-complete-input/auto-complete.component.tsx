@@ -34,8 +34,8 @@ export const AutoCompleteInput = (): ReactElement => {
     const searchString: string = event.target.value;
     setValue(searchString);
     if (searchString.length > 0) {
-      const newList = await fetchData(searchString);
-      if (newList) setUsersList(newList);
+      debounce(fetchData)(searchString);
+      // setUsersList(newList);
     }
   };
 
@@ -72,10 +72,6 @@ export const AutoCompleteInput = (): ReactElement => {
     }
     if (selectedIndex > page * 10) {
       setPage((prev) => prev + 1);
-      if (listRef.current) {
-        console.dir(listRef.current);
-        // listRef.current.children.scrollIntoView();
-      }
     }
   };
 
@@ -87,6 +83,21 @@ export const AutoCompleteInput = (): ReactElement => {
       }
     }
   };
+
+  let timer: any;
+  function debounce(callback: Function, timeout = 500) {
+    return async function (queryString: string) {
+      clearTimeout(timer);
+      timer = setTimeout(async function () {
+        if (queryString !== value) {
+          const result = await callback.call(this, queryString);
+          if (result) {
+            setUsersList(result);
+          }
+        }
+      }, timeout);
+    };
+  }
 
   return (
     <>
