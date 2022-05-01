@@ -5,15 +5,20 @@ export type UserCardPropsType = {
   imgUrl: string;
   userName: string;
   userInfo: string;
+  isSelected: boolean;
 };
 
 export const UserCard = ({
   imgUrl = "",
   userName = "",
   userInfo = "",
+  isSelected = false,
 }: UserCardPropsType): ReactElement<UserCardPropsType> => {
   return (
-    <div className="flexContainer" aria-hidden>
+    <div
+      className={isSelected ? "flexContainerSelected" : "flexContainer"}
+      aria-hidden
+    >
       <div className="firstColumn">
         <img className="icon" src={imgUrl} alt={"img"} />
       </div>

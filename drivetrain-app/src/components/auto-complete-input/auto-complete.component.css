@@ -8,7 +8,7 @@
 }
 
 .inputField {
-  width: 310px;
+  width: 320px;
   height: 30px;
 }
 
@@ -18,4 +18,7 @@
   margin-right: auto;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto;
+  max-height: 600px;
+  max-width: 335px;
 }

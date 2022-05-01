@@ -17,6 +17,21 @@
   border: 2px solid blue;
 }
 
+.flexContainerSelected {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 300px;
+  margin: 2px;
+  padding: 0px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background-color: rgba(113, 158, 255, 0.2);
+  cursor: pointer;
+  color: blue;
+  border: 2px solid blue;
+}
+
 .firstColumn {
   display: flex;
   flex-direction: column;
