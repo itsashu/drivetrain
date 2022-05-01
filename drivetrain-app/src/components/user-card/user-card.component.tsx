@@ -13,16 +13,14 @@ export const UserCard = ({
   userInfo = "",
 }: UserCardPropsType): ReactElement<UserCardPropsType> => {
   return (
-    <>
-      <div className="flexContainer" aria-hidden>
-        <div className="firstColumn">
-          <img className="icon" src={imgUrl} alt={"img"} />
-        </div>
-        <div className="secondColumn">
-          <div className="row1">{userName}</div>
-          <div className="row2"> {userInfo}</div>
-        </div>
+    <div className="flexContainer" aria-hidden>
+      <div className="firstColumn">
+        <img className="icon" src={imgUrl} alt={"img"} />
       </div>
-    </>
+      <div className="secondColumn">
+        <div className="row1">{userName}</div>
+        <div className="row2"> {userInfo}</div>
+      </div>
+    </div>
   );
 };

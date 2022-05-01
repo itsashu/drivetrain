@@ -3,9 +3,11 @@
   flex-direction: row;
   height: 50px;
   width: 300px;
+  margin: 2px;
   padding: 0px;
   padding-left: 10px;
-  /* border: 1px solid gray; */
+  background-color: rgba(211, 211, 211, 0.288);
+  border-radius: 5px;
 }
 
 .flexContainer:hover {

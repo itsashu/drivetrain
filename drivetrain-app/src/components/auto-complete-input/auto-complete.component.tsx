@@ -1,30 +1,24 @@
 import { ReactElement, useEffect, useState } from "react";
-import { Octokit } from "@octokit/core";
+import { fetchData } from "../../api-service/fetch-users-list.api";
 import { UserCard } from "../user-card/user-card.component";
 import "./auto-complete.component.css";
-
-const octokit = new Octokit({
-  auth: "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",
-});
 
 export const AutoCompleteInput = (): ReactElement => {
   const [value, setValue] = useState<string>("");
   const [usersList, setUsersList] = useState([] as any[]);
 
   useEffect(() => {
-    if (value) {
-      fetchData(value);
+    if (value.length === 0) {
+      setUsersList([]);
     }
   }, [value]);
 
-  const fetchData = async (value: string) => {
-    try {
-      const response = await octokit.request("GET /search/users", { q: value });
-      // const data = await response.json();
-      console.dir(response);
-      setUsersList(response.data.items);
-    } catch (e) {
-      console.error(e);
+  const inputHandler = async (event: { target: { value: string } }) => {
+    const searchString: string = event.target.value;
+    setValue(searchString);
+    if (searchString.length > 0) {
+      const newList = await fetchData(searchString);
+      if (newList) setUsersList(newList);
     }
   };
 
@@ -43,18 +37,21 @@ export const AutoCompleteInput = (): ReactElement => {
           placeholder="Enter Name of Users"
           type="text"
           value={value}
-          onChange={(event) => setValue(event.target.value)}
+          onChange={inputHandler}
         ></input>
-        {usersList?.length > 0 &&
-          usersList.map((user) => (
-            <div key={user.id} onClick={() => clickHandler(user)}>
-              <UserCard
-                userName={user.login}
-                userInfo={user.id}
-                imgUrl={user.avatar_url}
-              />
-            </div>
-          ))}
+        {usersList?.length > 0 && (
+          <div className="suggestionsList">
+            {usersList.map((user) => (
+              <div key={user.id} onClick={() => clickHandler(user)}>
+                <UserCard
+                  userName={user.login}
+                  userInfo={user.id}
+                  imgUrl={user.avatar_url}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );
