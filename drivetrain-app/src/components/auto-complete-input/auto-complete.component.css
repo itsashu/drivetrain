@@ -1,0 +1,14 @@
+.autoComplete {
+  display: absolute;
+  top: 5px;
+  right: 0px;
+  margin: auto;
+  align-items: center;
+  align-content: center;
+  padding: auto;
+}
+
+.inputField {
+  width: 350px;
+  height: 30px;
+}

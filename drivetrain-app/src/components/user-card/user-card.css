@@ -1,0 +1,57 @@
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 300px;
+  padding: 0px;
+  padding-left: 10px;
+  /* border: 1px solid gray; */
+}
+
+.flexContainer:hover {
+  background-color: rgba(113, 158, 255, 0.2);
+  cursor: pointer;
+  color: blue;
+  border: 2px solid blue;
+}
+
+.firstColumn {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  height: auto;
+  width: 60px;
+}
+
+.secondColumn {
+  display: flex;
+  height: auto;
+  width: auto;
+  padding: 3px 0px 3px 0px;
+  flex-direction: column;
+}
+
+.row1 {
+  display: flex;
+  height: 30px;
+  font-size: 20px;
+}
+.row2 {
+  display: flex;
+  height: 20px;
+  font-size: 12px;
+}
+
+.icon {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  padding: 5px 5px;
+  color: white;
+}
